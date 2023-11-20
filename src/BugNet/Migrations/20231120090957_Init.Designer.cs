@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugNet.Migrations
 {
     [DbContext(typeof(BugDbContext))]
-    [Migration("20231120084207_Init")]
+    [Migration("20231120090957_Init")]
     partial class Init
     {
         /// <inheritdoc />
