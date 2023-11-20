@@ -1,0 +1,44 @@
+﻿@page "/bugs/create"
+@inject IBugService BugService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>New Bug</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Bug" OnValidSubmit="AddBug" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" />
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <InputText id="name" @bind-Value="Bug.Name" class="form-control" />
+                <ValidationMessage For="() => Bug.Name" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <InputText id="description" @bind-Value="Bug.Description" class="form-control" />
+                <ValidationMessage For="() => Bug.Description" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="isdone" class="form-label">IsDone:</label>
+                <InputCheckbox id="isdone" @bind-Value="Bug.IsDone" class="form-check-input" />
+                <ValidationMessage For="() => Bug.IsDone" class="text-danger" />
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button> <a href="/">Back to List</a>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    public Bug Bug { get; set; } = new Bug { Description = "", Name = "" };
+
+    public async Task AddBug()
+    {
+        await BugService.CreateAync(Bug);
+        NavigationManager.NavigateTo("/");
+    }
+}

@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/src/BugNet.Web/bugs.sqlite-shm
+/src/BugNet.Web/bugs.sqlite-wal
