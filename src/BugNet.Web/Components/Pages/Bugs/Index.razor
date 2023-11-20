@@ -4,7 +4,7 @@
 
 <h3>Bugs</h3>
 
-<a href="bugs/create">New Bug</a>
+<a href="bugs/create" class="btn btn-primary">New Bug</a>
 
 @if (Bugs is not null)
 {
@@ -23,6 +23,9 @@
                 <td>@bug.Name</td>
                 <td>@bug.IsDone</td>
                 <td>
+                        <a href="@($"bugs/edit?id={bug.Id}")" class="btn btn-info">Edit</a>
+                        <a href="@($"bugs/details?id={bug.Id}")" class="btn btn-outline-primary">Details</a>
+                        <a href="@($"bugs/delete?id={bug.Id}")" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
         }

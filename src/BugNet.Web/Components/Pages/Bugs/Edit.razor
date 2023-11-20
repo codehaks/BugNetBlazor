@@ -1,0 +1,76 @@
+﻿@page "/Bugs/edit"
+@inject IBugService BugService
+@inject NavigationManager NavigationManager
+
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h4>Bug</h4>
+<hr />
+@if (Bug is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="Bug" OnValidSubmit="UpdateBug" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <input type="hidden" name="Bug.Id" value="@Bug.Id" />
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <InputText id="name" @bind-Value="Bug.Name" class="form-control" />
+                    <ValidationMessage For="() => Bug.Name" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <InputText id="description" @bind-Value="Bug.Description" class="form-control" />
+                    <ValidationMessage For="() => Bug.Description" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="isdone" class="form-label">IsDone:</label>
+                    <InputCheckbox id="isdone" @bind-Value="Bug.IsDone" class="form-check-input" />
+                    <ValidationMessage For="() => Bug.IsDone" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button> 
+                
+                <a href="/">Back to List</a>
+            </EditForm>
+        </div>
+    </div>
+}
+
+
+@code {
+    [SupplyParameterFromQuery]
+    public int Id { get; set; }
+
+    [SupplyParameterFromForm]
+    public Bug? Bug { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Bug ??= await BugService.FindByIdAsync(Id);
+
+        if (Bug is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    public async Task UpdateBug()
+    {
+        if (Bug is not null)
+        {
+            await BugService.UpdateAsync(Bug);
+
+        }
+
+        NavigationManager.NavigateTo("/");
+    }
+
+}
