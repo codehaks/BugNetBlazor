@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugNet", "src\BugNet\BugNet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1BDDCB8E-F29D-41A7-A9A2-DDC1911230C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugNet.Web", "src\BugNet.Web\BugNet.Web.csproj", "{4B053B7B-E7C1-438C-BC81-6B492DF5D1CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{865CF03A-F408-4C16-A868-966AB5E32A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{865CF03A-F408-4C16-A868-966AB5E32A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{865CF03A-F408-4C16-A868-966AB5E32A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B053B7B-E7C1-438C-BC81-6B492DF5D1CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B053B7B-E7C1-438C-BC81-6B492DF5D1CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B053B7B-E7C1-438C-BC81-6B492DF5D1CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B053B7B-E7C1-438C-BC81-6B492DF5D1CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{865CF03A-F408-4C16-A868-966AB5E32A1F} = {1BDDCB8E-F29D-41A7-A9A2-DDC1911230C7}
+		{4B053B7B-E7C1-438C-BC81-6B492DF5D1CB} = {1BDDCB8E-F29D-41A7-A9A2-DDC1911230C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C26B3BF4-F2DF-45A6-BAB5-872A5FA0D1AC}
