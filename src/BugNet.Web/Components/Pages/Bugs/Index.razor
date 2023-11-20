@@ -1,0 +1,45 @@
+﻿@page "/bugs/index"
+@using BugNet.Infrastructure.Models
+@inject BugService BugService
+
+<h3>Index</h3>
+
+@if (Bugs is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Is Done</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bug in Bugs)
+            {
+                <tr>
+                    <td>@bug.Name</td>
+                    <td>@bug.IsDone</td>
+                    <td>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Not found!</p>
+}
+
+
+
+@code {
+    public IList<Bug>? Bugs { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Bugs = await BugService.GetAllAsync();
+    }
+}

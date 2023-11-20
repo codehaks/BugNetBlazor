@@ -1,8 +1,21 @@
+using BugNet.Application.Contracts;
+using BugNet.Application.Services;
+using BugNet.Infrastructure.Data;
 using BugNet.Web.Components;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<BugDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["Database"]);
+    options.LogTo(Console.WriteLine, LogLevel.Information);
+});
+
+builder.Services.AddScoped<IBugService, BugService>();
+
 builder.Services.AddRazorComponents();
 
 var app = builder.Build();
